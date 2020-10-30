@@ -1,0 +1,13 @@
+{
+    "name": "ouun/wordpress-coming-soon",
+    "description": "Super simple Coming Soon Mode for WordPress",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Philipp",
+            "email": "philipp@ouun.io"
+        }
+    ],
+    "require": {}
+}
