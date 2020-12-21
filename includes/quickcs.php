@@ -11,9 +11,12 @@ function quickcs_redirect_requirements()
 {
     // Check conditions first
     if (!is_user_logged_in() && !wp_doing_ajax() && !defined('WP_CLI')) {
+        $whitelabel_slugs = apply_filters('quickcs_whitelabel_slugs', array( 'wp-login.php', 'wp-register.php' ));
+
         if ('/coming-soon/' != $_SERVER['REQUEST_URI'] &&
             '/xmlrpc.php' != $_SERVER['REQUEST_URI'] &&
-            !in_array($GLOBALS['pagenow'], apply_filters('quickcs_whitelabel_slugs', array( 'wp-login.php', 'wp-register.php' )), true)
+            !in_array($GLOBALS['pagenow'], $whitelabel_slugs, true) &&
+            !preg_match('/'.implode('|', $whitelabel_slugs).'/', $_SERVER['REQUEST_URI'], $matches)
         ) {
             wp_safe_redirect(trailingslashit('/coming-soon'));
             exit;
