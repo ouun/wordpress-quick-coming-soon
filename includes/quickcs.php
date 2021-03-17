@@ -15,7 +15,7 @@ function quickcs_redirect_requirements()
             '/xmlrpc.php' != $_SERVER['REQUEST_URI'] &&
             !in_array($GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ), true)
         ) {
-            wp_safe_redirect(trailingslashit('/coming-soon'));
+            wp_safe_redirect(trailingslashit(get_home_url(null, 'coming-soon', null)));
             exit;
         }
     }
